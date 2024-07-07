@@ -1,0 +1,27 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: Home_Page
+chapters:
+- file: Courses
+  sections:
+  - file: courses/pattern_recognition
+    sections:
+    - file: courses/PR/Introduction/PR_intro
+      sections:
+      - file: courses/PR/Introduction/DataSet
+      - file: courses/PR/Introduction/Model
+      - file: courses/PR/Introduction/Cost
+      - file: courses/PR/Introduction/LearningRule
+    - file: courses/PR/Visualization/PR_intro_Visualization
+    - file: courses/PR/Clustering/PR_intro_Clustering
+    - file: courses/PR/Regression/PR_intro_Regression
+    - file: courses/PR/Classification/PR_intro_Classification
+  - file: courses/machine_learning
+  - file: courses/filtering_algorithms
+  - file: courses/signal_processing
+  - file: courses/image_processing
+- file: Blog
+- file: Contact_Me
+- file: About_Me
