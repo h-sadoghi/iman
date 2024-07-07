@@ -1,0 +1,60 @@
+Traceback (most recent call last):
+  File "C:\Users\imana\anaconda3\envs\Howsam\lib\site-packages\jupyter_cache\executors\utils.py", line 58, in single_nb_execution
+    executenb(
+  File "C:\Users\imana\anaconda3\envs\Howsam\lib\site-packages\nbclient\client.py", line 1314, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "C:\Users\imana\anaconda3\envs\Howsam\lib\site-packages\jupyter_core\utils\__init__.py", line 172, in wrapped
+    return loop.run_until_complete(inner)
+  File "C:\Users\imana\anaconda3\envs\Howsam\lib\asyncio\base_events.py", line 649, in run_until_complete
+    return future.result()
+  File "C:\Users\imana\anaconda3\envs\Howsam\lib\site-packages\nbclient\client.py", line 709, in async_execute
+    await self.async_execute_cell(
+  File "C:\Users\imana\anaconda3\envs\Howsam\lib\site-packages\nbclient\client.py", line 1062, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "C:\Users\imana\anaconda3\envs\Howsam\lib\site-packages\nbclient\client.py", line 918, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import numpy as np
+import matplotlib.pyplot as plt
+from minisom import MiniSom
+
+# Sample data: 100 points in a 3D space
+data = np.random.rand(100, 3)
+
+# Initialize SOM with a 10x10 grid and input dimension of 3
+som = MiniSom(10, 10, 3, sigma=0.3, learning_rate=0.5)
+
+# Train the SOM
+som.train_random(data, 100)
+
+# Plotting the SOM
+plt.figure(figsize=(10, 10))
+plt.title('Self-Organizing Map (SOM)')
+
+# Plotting the data points
+for i, x in enumerate(data):
+    w = som.winner(x)
+    plt.text(w[0], w[1], str(i), color=plt.cm.rainbow(i / 100.0), fontdict={'weight': 'bold', 'size': 11})
+
+# Creating a heatmap of distances
+distance_map = som.distance_map().T
+plt.imshow(distance_map, cmap='bone_r', interpolation='nearest')
+plt.colorbar()
+
+plt.show()
+
+------------------
+
+
+[1;31m---------------------------------------------------------------------------[0m
+[1;31mModuleNotFoundError[0m                       Traceback (most recent call last)
+Cell [1;32mIn[3], line 3[0m
+[0;32m      1[0m [38;5;28;01mimport[39;00m [38;5;21;01mnumpy[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnp[39;00m
+[0;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mmatplotlib[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpyplot[39;00m [38;5;28;01mas[39;00m [38;5;21;01mplt[39;00m
+[1;32m----> 3[0m [38;5;28;01mfrom[39;00m [38;5;21;01mminisom[39;00m [38;5;28;01mimport[39;00m MiniSom
+[0;32m      5[0m [38;5;66;03m# Sample data: 100 points in a 3D space[39;00m
+[0;32m      6[0m data [38;5;241m=[39m np[38;5;241m.[39mrandom[38;5;241m.[39mrand([38;5;241m100[39m, [38;5;241m3[39m)
+
+[1;31mModuleNotFoundError[0m: No module named 'minisom'
+
